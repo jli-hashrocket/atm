@@ -1,0 +1,68 @@
+Implementation Details
+
+You will want to persist the accounts and their balances separately from their transactions. Use YML to store the list of accounts. Use a separate CSV file for every account to store their transaction history.
+
+Your implementation must define and make use of the following classes at a minimum:
+
+ATM
+Account
+Transaction base class that tracks attributes common to all transactions (e.g. date, amount)
+Deposit subclass of Transaction used by ATM when recording deposits
+Withdrawal subclass of Transaction used by ATM when recording withdrawals
+
+class ATM
+ - option to open new Account
+   - enter PIN #
+   - confirm PIN #
+   - if PIN doesnt match, prompt to reenter PIN and confirm
+   - after confirmation, specify initial Deposit
+   - record initial desposit as Transaction
+ - option to go to existing Account
+   - specify PIN to access Account
+   - specify to see balance
+   - balance that correlates with the PIN is displayed
+   - If I specify an invalid PIN, I am told that the account was not found
+end
+
+class Account
+ attributes: PIN, balance
+ - report balance
+ - make Withdrawal
+ - make Desposit
+ - Transaction history
+end
+
+class Transaction
+ attributes: PIN, date, balance, withdrawal amount, desposit amount
+
+ - i must specify PIN to access Account
+ - if i specify an invalid PIN, I am told that the account was not found
+ - i can specify that i'd like to view my account history
+ - all of transactions are displayed in sequential order
+ - effective balance should be displayed
+
+end
+
+class Deposit < Transaction
+ attributes: PIN, date, balance, desposit amount
+
+ - specify PIN, if not valid, say "Account doesn't exist"
+ - specify to make deposit
+ - can specify to make a deposit
+ - specify the desposit amount
+ - if specify a valid deposit amount, Account should be credited the desposit amount, and the Transaction should be recorded
+ - My new balance should be displayed
+
+end
+
+class Withdrawal < Transaction
+ attributes: date, balance, withdrawal amount
+
+ - specify PIN, if not valid, say "Account doesn't exist"
+ - specify to make withdrawal
+ - specify withdrawal amount that is less than or eql to balance
+ - if withdrawal amount exceeds balance, disallow withdrawal and notify that there's insufficient funds
+ - if valid withdrawal amount, withdrawal amount is subtracted from balance and Transaction is recorded
+ - new balance should be displayed
+
+end
