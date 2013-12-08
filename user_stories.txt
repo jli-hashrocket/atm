@@ -11,7 +11,7 @@ Acceptance Criteria:
 *I must confirm my PIN
 *If my PIN and PIN confirmation do not match, I should be prompted to re-enter and        reconfirm
 *After my PIN has been established, I am prompted to specify my initial deposit
-My initial deposit is recorded as a transaction on my account
+*My initial deposit is recorded as a transaction on my account
 
 Report Balance:
 
